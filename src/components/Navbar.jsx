@@ -1,9 +1,9 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { BsShop, BsPencil } from "react-icons/bs";
+import { BsShop, BsPencil, BsCart3 } from "react-icons/bs";
 import User from "./User";
 import Button from "./ui/Button";
-import { useAuthContext } from "./context/AuthContext";
+import { useAuthContext } from "../context/AuthContext";
 
 function Navbar() {
   const { user, login, logout } = useAuthContext();
@@ -16,7 +16,11 @@ function Navbar() {
       </Link>
       <nav className="flex items-center gap-4 font-semibold">
         <Link to="/products">Products</Link>
-        {user && <Link to="/carts">My Cart</Link>}
+        {user && (
+          <Link to="/carts" className="text-xl">
+            <BsCart3 />
+          </Link>
+        )}
         {user && user.isAdmin && (
           <Link to="/products/new" className="text-xl">
             <BsPencil />
