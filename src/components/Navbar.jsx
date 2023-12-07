@@ -1,9 +1,10 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { BsShop, BsPencil, BsCart3 } from "react-icons/bs";
+import { BsShop, BsPencil } from "react-icons/bs";
 import User from "./User";
 import Button from "./ui/Button";
 import { useAuthContext } from "../context/AuthContext";
+import CartStatus from "./CartStatus";
 
 function Navbar() {
   const { user, login, logout } = useAuthContext();
@@ -17,8 +18,8 @@ function Navbar() {
       <nav className="flex items-center gap-4 font-semibold">
         <Link to="/products">Products</Link>
         {user && (
-          <Link to="/carts" className="text-xl">
-            <BsCart3 />
+          <Link to="/carts">
+            <CartStatus />
           </Link>
         )}
         {user && user.isAdmin && (
