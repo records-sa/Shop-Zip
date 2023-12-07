@@ -6,7 +6,10 @@ import { useAuthContext } from "../context/AuthContext";
 
 function CartStatus() {
   const { uid } = useAuthContext();
-  const { data: products } = useQuery(["carts"], () => getCart(uid));
+  const { data: products } = useQuery({
+    queryKey: ["carts"],
+    queryFn: getCart(uid),
+  });
 
   return (
     <div className="relative">
